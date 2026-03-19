@@ -1,0 +1,8 @@
+flask==3.0.3
+numpy==1.26.4
+opencv-python-headless==4.10.0.84
+scikit-learn==1.5.1
+Pillow==10.4.0
+pytest==8.3.2
+pytest-cov==5.0.0
+scipy==1.14.1

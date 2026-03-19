@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Olive Oil Quality Control System</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <span class="logo">🫒</span>
+      <div>
+        <h1>Olive Oil Quality Control</h1>
+        <p class="subtitle">Vision-Based Inspection System – FIG-Cell Optique Gravitaire</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Upload card -->
+    <section class="card upload-card">
+      <h2>Bottle Inspection</h2>
+      <p>Upload a bottle image to run the full AI quality-control pipeline.</p>
+
+      <form id="upload-form">
+        <label class="drop-zone" id="drop-zone">
+          <input type="file" id="image-input" name="image"
+                 accept=".png,.jpg,.jpeg,.bmp,.tiff" hidden />
+          <span id="drop-label">
+            <span class="icon">📂</span><br/>
+            Drag &amp; drop or <strong>click to select</strong> an image
+          </span>
+          <img id="preview" src="" alt="Preview" hidden />
+        </label>
+        <button type="submit" id="inspect-btn" disabled>Run Inspection</button>
+      </form>
+    </section>
+
+    <!-- Spinner -->
+    <div id="spinner" hidden>
+      <div class="spinner-ring"></div>
+      <p>Analysing bottle …</p>
+    </div>
+
+    <!-- Results card -->
+    <section class="card results-card" id="results-card" hidden>
+      <div class="verdict-banner" id="verdict-banner">
+        <span id="verdict-text">–</span>
+      </div>
+
+      <div class="results-grid">
+        <!-- Annotated image -->
+        <div class="annotated-col">
+          <h3>Annotated Image</h3>
+          <img id="annotated-img" src="" alt="Annotated result" />
+        </div>
+
+        <!-- Detail checks -->
+        <div class="details-col">
+          <h3>Inspection Details</h3>
+
+          <div class="check-item" id="check-alignment">
+            <span class="check-icon">–</span>
+            <div>
+              <strong>FIG-Cell Alignment</strong>
+              <p id="msg-alignment"></p>
+            </div>
+          </div>
+
+          <div class="check-item" id="check-fill">
+            <span class="check-icon">–</span>
+            <div>
+              <strong>Fill Level</strong>
+              <p id="msg-fill"></p>
+              <small id="detail-fill"></small>
+            </div>
+          </div>
+
+          <div class="check-item" id="check-cap">
+            <span class="check-icon">–</span>
+            <div>
+              <strong>Cap &amp; Label</strong>
+              <p id="msg-cap"></p>
+            </div>
+          </div>
+
+          <div class="check-item" id="check-clarity">
+            <span class="check-icon">–</span>
+            <div>
+              <strong>Oil Clarity</strong>
+              <p id="msg-clarity"></p>
+              <small id="detail-clarity"></small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button id="reset-btn">Inspect Another Bottle</button>
+    </section>
+
+    <!-- Error card -->
+    <div class="card error-card" id="error-card" hidden>
+      <p id="error-msg"></p>
+    </div>
+  </main>
+
+  <footer>
+    <p>
+      Vision-Based Quality Control System for Olive Oil Production &mdash;
+      Green Tech AI Initiative
+    </p>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
